@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/static/css/bob.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="blocklogin">
+
+                <h2>Регистрация</h2>
+                <form method="POST">
+                    <label for="name">
+                        Имя:
+                        <input type="text" id="name" name="name">
+                    </label>
+                    <label for="surname">
+                        Фамилия:
+                        <input type="text" id="surname" name="surname">
+                    </label>
+                    <label for="login">
+                        Логин:
+                        <input type="text" id="login" name="login">
+                    </label>
+                    <label for="email">
+                        Email:
+                        <input type="email" id="email" name="email">
+                    </label>
+                    <label for="password">
+                        Пароль:
+                        <input type="password" id="password" name="password">
+                    </label>
+                    <input type="submit" value="Зарегистрироваться" class="button">
+                    <p>Уже зарегистрированы? <a href="enter">Войдите в систему.</a></p>
+                </form>
+            </div>
+        </div>
+</body>
+</html>

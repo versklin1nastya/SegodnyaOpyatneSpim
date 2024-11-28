@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Быстрый старт. Размещение интерактивной карты на странице</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=c0a075bd-a598-46df-9e0c-23f74e31f651&lang=ru_RU" type="text/javascript"></script>
+      <link rel="stylesheet" href="/static/css/main.css" type="text/css">
+
+<script type="text/javascript">
+    ymaps.ready(function () {
+        var myMap = new ymaps.Map('map', {
+            center: [55.7558, 37.6173],
+            zoom: 10,
+            controls: []
+        }, {
+            restrictMapArea: [
+                [55.3, 36.2],
+                [56.2, 38.5]
+            ]
+        });
+
+        var myPlacemark1 = new ymaps.Placemark([55.7520233, 37.6174994], {
+    balloonContentHeader: 'Московский кремль',
+    balloonContentBody: `
+        <img src="https://cdn.culture.ru/images/0ed8639c-ed61-5cf3-af66-2fc0015e2ce5" alt="Московский кремль" style="width: 100%; height: auto;"/>
+        Московский Кремль — древнейшая часть столицы России, которая имеет большое историческое и культурное значение
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="1" >Информация</button><button class="test-btn" data-id="1">Тест</button>'
+});
+
+myMap.geoObjects.add(myPlacemark1);
+
+
+
+
+
+            // Вторая метка
+            var myPlacemark2 = new ymaps.Placemark([55.760221, 37.618561], {
+                balloonContentHeader: 'Большой театр',
+                balloonContentBody: `
+        <img src="https://i6.photo.2gis.com/images/branch/32/4503599636707062_dcd9.jpg" alt="Большой театр" style="width: 100%; height: auto;"/>
+        Большой театр — один из крупнейших и старейших в России и один из самых значительных в мире театров оперы и балета.
+    `,
+                balloonContentFooter: '<button class="info-btn" data-id="2">Информация</button><button class="test-btn" data-id="2">Тест</button>'
+            });
+
+            myMap.geoObjects.add(myPlacemark2);
+
+
+
+
+
+          var myPlacemark3 = new ymaps.Placemark([55.761092, 37.578308], {
+              hintContent: 'Московский зоопарк',
+              balloonContentBody: `
+        <img src="https://i.pinimg.com/originals/3d/df/e6/3ddfe6c5bf2f0be744c5cc936c4689dc.jpg" style="width: 100%; height: auto;"/>
+        Московский зоопарк — зоологический парк в центре Москвы, один из старейших зоопарков в Европе (основан в 1864 году).
+`,
+            balloonContentFooter: '<button class="info-btn" data-id="3">Информация</button><button class="test-btn" data-id="3">Тест</button>'
+          })
+
+          myMap.geoObjects.add(myPlacemark3);
+
+          var myPlacemark4 = new ymaps.Placemark([55.765263, 37.667749], {
+              hintContent: 'Школа акварели Сергея Андрияки ',
+              balloonContentBody: `
+        <img src="https://i5.photo.2gis.com/images/branch/0/30258560079377639_9666.jpg" alt="Школа акварели Сергея Андрияки " style="width: 100%; height: auto;"/>
+        Школа акварели Сергея Андрияки — это место, где любой желающий может научиться основам классической акварели и получить дополнительное художественное образование
+     `,
+     balloonContentFooter: '<button class="info-btn" data-id="4">Информация</button><button class="test-btn" data-id="4">Тест</button>'
+          });
+          myMap.geoObjects.add(myPlacemark4);
+
+          var myPlacemark5 = new ymaps.Placemark([55.752507, 37.623150], {
+              hintContent: 'Собор Василия Блаженного ',
+              balloonContentBody: `
+        <img src="https://kartinki.pics/uploads/posts/2022-03/1647533238_10-kartinkin-net-p-sobor-vasiliya-blazhennogo-kartinki-12.png" style="width: 100%; height: auto;"/>
+        'Храм Василия Блаженного (Собор Покрова Пресвятой Богородицы на Рву) — один из самых красивых и узнаваемых архитектурных памятников Москвы.
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="5">Информация</button><button class="test-btn" data-id="5">Тест</button>'
+          });
+          myMap.geoObjects.add(myPlacemark5);
+
+          var myPlacemark6 = new ymaps.Placemark([55.749588, 37.535299], {
+              hintContent: 'Москва-Сити ',
+              balloonContentBody: `
+        <img src="https://extraguide.ru/images/t/fc36080b81671299808889e986e3f4075bd81f84.jpeg" alt="Москва-Сити " style="width: 100%; height: auto;"/>
+        Московский деловой центр «Москва-Сити» — ультрасовременный архитектурный комплекс небоскрёбов из стекла и бетона.
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="6">Информация</button><button class="test-btn" data-id="6">Тест</button>'
+          });
+          myMap.geoObjects.add(myPlacemark6);
+
+          var myPlacemark7 = new ymaps.Placemark([55.850939, 37.466287], {
+              hintContent: 'Северный Речной Вокзал ',
+              balloonContentBody: `
+        <img src="https://cdn1.ozone.ru/s3/multimedia-w/6096547028.jpg" alt="Северный Речной Вокзал " style="width: 100%; height: auto;"/>
+        Северный речной вокзал — один из двух речных вокзалов Москвы (вместе с Южным), ранее Химкинский речной вокзал.
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="7">Информация</button><button class="test-btn" data-id="7">Тест</button>'
+          });
+          myMap.geoObjects.add(myPlacemark7);
+
+          var myPlacemark8 = new ymaps.Placemark([55.793263, 37.552987], {
+              hintContent: 'Петровский путевой дворец  ',
+              balloonContentBody: `
+        <img src="https://i01.fotocdn.net/s217/fe8c69fd102a2f80/public_pin_l/2962922625.jpg" alt="Петровский путевой дворец" style="width: 100%; height: auto;"/>
+        Петровский путевой дворец в Москве — памятник русской неоготической архитектуры, построенный в 1776–1780-х годах по указу Екатерины II.
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="8">Информация</button><button class="test-btn" data-id="8">Тест</button>'
+
+          });
+          myMap.geoObjects.add(myPlacemark8);
+          var myPlacemark9 = new ymaps.Placemark([55.819682, 37.611663], {
+              hintContent: 'Останкинская телебашня ',
+              balloonContentBody: `
+        <img src="//avatars.mds.yandex.net/i?id=d9025058545230bda027fc48c0828386_l-8152091-images-thumbs&n=13" alt="Останкинская телебашня" style="width: 100%; height: auto;"/>
+        Останкинской телебашни находится небольшой музей, где можно узнать об истории и технических аспектах этого архитектурного чуда.
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="9">Информация</button><button class="test-btn" data-id="29">Тест</button>'
+          });
+          myMap.geoObjects.add(myPlacemark9);
+
+          var myPlacemark10 = new ymaps.Placemark([55.822751, 37.639752], {
+              hintContent: 'Музей космонавтики ',
+              balloonContentBody: `
+        <img src="https://cdn.culture.ru/images/34c5d460-7b01-5b41-be21-611af9b11549" alt="Музей космонавтики" style="width: 100%; height: auto;"/>
+        Музей космонавтики — это место, где каждый может окунуться в мир космоса, узнать много нового о достижениях человечества в освоении космического пространства
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="10">Информация</button><button class="test-btn" data-id="10">Тест</button>'
+          });
+          myMap.geoObjects.add(myPlacemark10);
+
+          var myPlacemark11 = new ymaps.Placemark([55.832985, 37.618413], {
+              hintContent: 'Москвариум ',
+              balloonContentBody: `
+        <img src="https://www.voayge-kaluga.ru/_si/6/25788200.jpg" alt="Москвариум" style="width: 100%; height: auto;"/>
+       «Москвариум» — центр океанографии и морской биологии в Москве
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="11">Информация</button><button class="test-btn" data-id="11">Тест</button>'
+
+          });
+          myMap.geoObjects.add(myPlacemark11);
+
+          var myPlacemark12 = new ymaps.Placemark([55.865786, 37.506755], {
+              hintContent: 'Усадьба Грачёвка ',
+              balloonContentBody: `
+        <img src="https://a.d-cd.net/lGAAAgIhxuA-1920.jpg" alt="Усадьба Грачёвка" style="width: 100%; height: auto;"/>
+        Усадьба Грачёвка — ранее подмосковное село и усадьба, в XV–XVI веках принадлежавшая в одно время Третьяковым-Ховриным.
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="12">Информация</button><button class="test-btn" data-id="12">Тест</button>'
+
+          });
+          myMap.geoObjects.add(myPlacemark12);
+
+          var myPlacemark13 = new ymaps.Placemark([55.794308, 37.749258], {
+              hintContent: 'Музей оружия',
+              balloonContentBody: `
+        <img src="https://avatars.mds.yandex.net/get-altay/5448678/2a0000017eba78af242e3151dc0033d5fe5f/orig" alt="Музей оружия" style="width: 100%; height: auto;"/>
+        Музей оружия в Москве — первый в России интерактивный музей, где все экспонаты можно трогать и примерять обмундирование различных эпох
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="13">Информация</button><button class="test-btn" data-id="13">Тест</button>'
+          });
+          myMap.geoObjects.add(myPlacemark13);
+
+          var myPlacemark14 = new ymaps.Placemark([55.804522, 37.670672], {
+              hintContent: 'Парк Сокольники ',
+              balloonContentBody: `
+        <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_66768b15c3201e69a36baae2_66768fc556480e19084705d0/scale_1200" alt="Парк Сокольники" style="width: 100%; height: auto;"/>
+        Парк культуры и отдыха «Сокольники» – памятник садово-паркового искусства, который сочетает в себе и площадки для проведения масштабных фестивалей, и тихие уголки нетронутой природы.
+    `,
+    balloonContentFooter: '<button class="info-btn" data-id="14">Информация</button><button class="test-btn" data-id="14">Тест</button>'
+          });
+          myMap.geoObjects.add(myPlacemark14);
+
+                document.addEventListener('click', function(e) {
+            if (e.target && (e.target.classList.contains('info-btn') || e.target.classList.contains('test-btn'))) {
+                var id = e.target.dataset.id;
+                var url = e.target.classList.contains('info-btn') ? "/information?id=" + id : "/test?id=" + id;
+                window.location.href = url;
+    }
+});
+                 myMap.events.add('balloonopen', function (e) {
+                var target = e.get('target');
+                var buttons = target.getData().balloonContentFooter;
+
+
+                var infoButtons = document.querySelectorAll('.info-btn');
+                var testButtons = document.querySelectorAll('.test-btn');
+
+                infoButtons.forEach(function (button) {
+                    button.addEventListener('click', function () {
+                        var id = button.getAttribute('data-id');
+                        window.location.href = "/information";
+                    });
+                });
+
+                testButtons.forEach(function (button) {
+                    button.addEventListener('click', function () {
+                        var id = button.getAttribute('data-id');
+                        window.location.href = "/test";
+    });
+});
+    });
+})
+</script>
+
+</head>
+<body>
+    <div id="map"></div>
+    <div id="buttons">
+        <button onclick="location.href='/account'">Аккаунт</button>
+        <button>Достижения</button>
+        <button>Рейтинг</button>
+        <button>Класс</button>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="stylesheet" href="/static/css/bob.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <style>
+
+    </style>
+</head>
+<body class="bodyy">
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="blocklogin">
+                <h2>Вход</h2>
+                <form method="POST" id="enter-form">
+                    <label for="login">
+                        Введите логин:
+                        <input type="text" id="login" name="login" required>
+                    </label>
+                    <label for="email">
+                        Введите email:
+                        <input type="email" id="email" name="email" required>
+                    </label>
+                    <label for="password">
+                        Введите пароль:
+                        <input type="password" id="password" name="password" required>
+                    </label>
+                    <input class="button" type="submit" value="Войти">
+                </form>
+                <p>Нет аккаунта? <a href="register">Создайте его.</a></p>
+            </div>
+        </div>
+<script src="/static/js/enter.js"></script>
+</body>
+</html>

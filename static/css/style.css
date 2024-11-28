@@ -1,0 +1,119 @@
+body{
+    background-image: url('/static/photo/mmm.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size: xx-large;
+}
+h1{
+    height: 100px;
+    padding-top: 200px;
+}
+img.bu{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+}
+img.du{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+.vov{
+    height: 20px;
+}
+img.did{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 275px;
+}
+
+
+.kot{
+    background-image: url('/static/photo/ьььь.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+.choice-cd{
+    display: flex;
+    margin-bottom: 0.5rem;
+    width: 50%;
+    font-size: 1.8rem;
+    border: 0.1rem solid aqua;
+    background-color: antiquewhite;
+}
+.choice-cd:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 aqua;
+    transform: translate(-0.1rem);
+    transition: transform 150ms;
+}
+.choice-prefix{
+    padding: 1.5re 2.5rem;
+    background-color: cadetblue;
+    color: antiquewhite;
+}
+.choice-text{
+    padding: 1.5rem;
+}
+img.ho{
+    display: table;
+    height: 500px;
+}
+.map-container {
+    padding: 40px;
+    text-align: center;
+    background-color: #e0f7ec;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#map {
+    width: 100%;
+    height: 600px;
+    background-color: #d0f0c0;
+    border: 1px solid #c5ffc7;
+    border-radius: 10px;
+    margin: 20px auto; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.map-title {
+    font-size: 2rem;
+    color: #4a7c59;
+    margin-bottom: 20px;
+}
+
+
+.map-description {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.start{
+    background-color: #000080;
+    color: #fff;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 30px;
+}

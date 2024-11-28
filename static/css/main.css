@@ -1,0 +1,32 @@
+body {
+        margin: 0;
+        background-color: #add8e6;
+        display: flex;
+    }
+    #map {
+        width: 80%;
+        height: 100vh;
+        position: relative;
+        right: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    #buttons {
+        width: 20%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    button {
+        background-color: #2354ce;
+        color: white;
+        width:80%;
+        height: 10%;
+        margin: 10% ;
+        font-size: 130%;
+}
+    .button:hover {
+            background-color: #03004b;
+        }
