@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Результаты теста</title>
+
+</head>
+<body>
+    <h1>Результаты</h1>
+    <p>Правильных ответов: {{ correct_answers }} из {{ total_questions }}</p>
+    {% if answers %}  <!--Вывод подробных результатов только если есть данные-->
+        <h2>Ответы:</h2>
+        <ul>
+            {% for question, data in answers.items() %}
+                <li>{{ question }}: Ваш ответ - {{ data.answer }}, Правильный ответ - {{ data.correct }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>

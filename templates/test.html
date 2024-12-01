@@ -1,10 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ title }}</title>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1; /* Убедитесь, что модальное окно находится поверх других элементов */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4); /* Темный фон позади модального окна */
+        }
+        .modal-content {
+            background-color: #00BFFF;
+            margin: 15% auto; /* Центрирование модального окна */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 400px; /* Ширина модального окна */
+            border-radius: 5px; /* Скругленные углы */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Тень для лучшего вида */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<h1>Тест</h1>
+    <h1>{{ title }}</h1>
+    <form method="POST">
+        <input type="hidden" name="test_id" value="{{ test_id }}">
+        {% for question in questions %}
+            <h3>{{ question.question }}</h3>
+            <ul>
+                {% for answer in question.answers %}
+                    <li>
+                        <input type="radio" name="{{ question.question }}" value="{{ answer[0] }}" required> {{ answer[1:] }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+        <button type="submit">Проверить</button>
+    </form>
+    <button onclick="location.href='/Mainpage'">Обратно</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Здесь будет результат</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем обычную отправку формы
+            // Здесь будет AJAX запрос, который отправит данные формы на сервер.
+            const form = this;
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form) // отправка как есть
+            }).then(response => response.text())
+              .then(html => {
+                document.getElementById('myModal').innerHTML = html; // заполняем содержимое модала
+                document.getElementById('myModal').style.display = 'block';
+              });
+
+        });
+
+        // Кнопка закрытия модального окна
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // Закрытие модального окна при клике вне него
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("myModal")) {
+                document.getElementById("myModal").style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
