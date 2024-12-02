@@ -1,3 +1,5 @@
+import json
+import secrets  #для генерации случайных строк
 from flask import Flask, request, render_template, redirect, url_for, flash, session
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,7 +9,7 @@ app.secret_key = 'BaNaNa_yo'  # Установите свой секретный
 
 
 @app.route("/")
-def index():
+def start():
     return render_template("Startpage.html")
 
 
@@ -790,6 +792,97 @@ def test_route():
         return render_template('results.html', correct_answers=correct_answers, total_questions=len(test_data['questions']))
     else:
         return "Ошибка: тест не найден"
+@app.route('/results', methods=['POST'])
+def results():
+    if request.method == 'POST':
+        test_id = int(request.form.get('test_id'))
+        test_data = tests.get(test_id)
+        user_login = session.get('user_login')  # Получаем логин из сессии
+        if user_login is None:
+            return "Ошибка: пользователь не авторизован"
+        if test_data:
+            answers = {}
+            correct_answers = 0
+            for question in test_data['questions']:
+                answer = request.form.get(question['question'])
+                answers[question['question']] = {'answer': answer, 'correct': question['correct']}
+                if answer == question['correct']:
+                    correct_answers += 1
+
+            conn = sqlite3.connect('result.db') # путь к базе данных
+            cursor = conn.cursor()
+            try:
+                cursor.execute('''
+                    INSERT INTO results (test_id, user_answers, correct_answers, total_questions)
+                    VALUES (?, ?, ?, ?)
+                ''', (test_id, json.dumps(answers), correct_answers, len(test_data['questions'])))
+                conn.commit()
+            except sqlite3.Error as e:
+                print(f"Ошибка при сохранении результатов: {e}")
+                conn.rollback()
+            finally:
+                conn.close()
+
+            return render_template('results.html', correct_answers=correct_answers, total_questions=len(test_data['questions']))
+        else:
+            return "Ошибка: тест не найден"
+    else:
+        return "Ошибка: недопустимый метод запроса"
+
+# Данные (в реальном приложении — база данных)
+groups = {}  # {group_id: {'name': group_name, 'users': [user1, user2, ...]}}
+users = {}    # {user_id: {'name': username, 'groups': [group1, group2, ...]}}
+next_group_id = 1
+next_user_id = 1
+
+
+def generate_group_link(group_id):
+    token = secrets.token_urlsafe(16)
+    return f"/join/{group_id}/{token}", token #возвращаем токен
+
+
+@app.route("/groups", methods=["GET", "POST"])
+def index():
+    global next_group_id
+    if request.method == "POST":
+        group_name = request.form["group_name"]
+        group_id = next_group_id
+        next_group_id += 1
+        group_link, token = generate_group_link(group_id)
+        groups[group_id] = {'name': group_name, 'users': [], 'token': token} #сохраняем токен
+        return render_template("index.html", group_link=group_link, group_name=group_name)
+    return render_template("index.html")
+
+
+@app.route("/join/<int:group_id>/<token>", methods=["GET", "POST"])
+def join(group_id, token):
+    global next_user_id
+    if group_id not in groups:
+        return "Группа не существует"
+
+    if groups[group_id]['token'] != token:
+        return "Неверная ссылка"
+
+    if request.method == "POST":
+        user_name = request.form.get("user_name")
+        user_id = next_user_id
+        next_user_id += 1
+        users[user_id] = {'name': user_name, 'groups': []}
+        groups[group_id]['users'].append(user_id)
+        users[user_id]['groups'].append(group_id)
+        return redirect(url_for("group_info", group_id=group_id))
+
+    return render_template("join.html", group_id=group_id)
+
+
+@app.route("/group/<int:group_id>")
+def group_info(group_id):
+    if group_id not in groups:
+      return "Группа не существует"
+    group = groups[group_id]
+    users_in_group = [users[user_id]['name'] for user_id in group['users']]
+    return render_template("group_info.html", group=group, users_in_group=users_in_group)
+
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')

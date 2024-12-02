@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Создать группу</h1>
+<form method="POST">
+    <label for="group_name">Название группы:</label>
+    <input type="text" name="group_name" id="group_name" required>
+    <button type="submit">Создать</button>
+</form>
+{% if group_link %}
+<p>Ссылка на группу: <a href="{{ group_link }}">{{ group_link }}</a> (Название группы: {{ group_name }})</p>
+{% endif %}
+</body>
+</html>

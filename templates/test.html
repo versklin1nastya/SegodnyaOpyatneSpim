@@ -2,7 +2,20 @@
 <html>
 <head>
     <title>{{ title }}</title>
-    <style>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Светлый фон страницы */
+            color: #333; /* Цвет текста */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00b3ff; /* Цвет заголовка */
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -12,17 +25,17 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4); /* Фон затемнения */
+            background-color: rgba(0, 0, 0, 0.6); /* Более темный фон затемнения */
         }
 
         .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* Центрирование */
+            background-color: #fff;
+            margin: 10% auto; /* Центрирование */
             padding: 20px;
             border: 1px solid #888;
-            width: 300px;
-            border-radius: 5px; /* Скругленные углы */
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Тень */
+            width: 400px; /* Ширина модального окна */
+            border-radius: 10px; /* Скругленные углы */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Более выраженная тень */
         }
 
         .close {
@@ -34,9 +47,36 @@
 
         .close:hover,
         .close:focus {
-            color: black;
+            color: #d9534f; /* Цвет при наведении */
             text-decoration: none;
             cursor: pointer;
+        }
+
+        button {
+            background-color: #00b3ff; /* Цвет кнопки */
+            color: white; /* Цвет текста кнопки */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px; /* Скругленные углы кнопки */
+            cursor: pointer;
+            transition: background-color 0.3s; /* Плавный переход цвета */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Цвет кнопки при наведении */
+        }
+
+        ul {
+            list-style-type: none; /* Убираем маркеры списка */
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0; /* Отступы между элементами списка */
+        }
+
+        input[type="radio"] {
+            margin-right: 10px; /* Отступ между радио-кнопкой и текстом */
         }
     </style>
 </head>
